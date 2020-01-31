@@ -35,7 +35,5 @@ public class PlayerControl : MonoBehaviour
 
     private void OnMouseDown() {
         int layerMask = 1 << pickupLayer;
-        RaycastHit hit;
-
     }
 }
