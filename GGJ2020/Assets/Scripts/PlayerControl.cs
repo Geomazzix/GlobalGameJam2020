@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     public float mouseSensitivity;
     public Transform cameraTransform;
     public float moveSpeed;
+    public int pickupLayer;
 
     private float rotationX = 0;
 
@@ -30,5 +31,11 @@ public class PlayerControl : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
         transform.Translate(new Vector3(horizontal, 0, vertical) * moveSpeed);
+    }
+
+    private void OnMouseDown() {
+        int layerMask = 1 << pickupLayer;
+        RaycastHit hit;
+
     }
 }
