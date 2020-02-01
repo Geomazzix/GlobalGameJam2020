@@ -55,7 +55,7 @@ public class Part : Item
 
     public Vector3 this[int i] => m_Pivots[i];
 
-    public EPart GetPossibleItemCombination(EItem itemLeft, EItem itemRight)
+    public static EPart GetPossibleItemCombination(EItem itemLeft, EItem itemRight)
     {
         KeyValuePair<EItem, EItem> key = new KeyValuePair<EItem, EItem>(itemLeft, itemRight);
         if (s_LookUpTable.ContainsKey(key)) return s_LookUpTable[key];
