@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float maxPickupDistance;
     public float pickupObjectDistance;
     public float pickedupObjectVerticalOriginOffset;
+    public float minPickupDistance;
 
     //variables
     private float rotationX = 0;
@@ -20,6 +21,23 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnGUI() { 
+        Event ev = Event.current;
+
+        if (ev.type == EventType.KeyDown) {
+            if(ev.keyCode == KeyCode.E) {
+                RaycastHit hit;
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, maxPickupDistance)) {
+                    I_Interactable interactable = hit.transform.gameObject.GetComponent<I_Interactable>();
+                    if(interactable != null) {
+                        interactable.onInteract();
+                    }
+                }
+            }
+        }
+
     }
 
     // Update is called once per frame
@@ -38,6 +56,7 @@ public class PlayerControl : MonoBehaviour
                             pickedObject = hit.transform.gameObject;
                             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
                             pickedBody.useGravity = false;
+                            pickedBody.velocity = Vector3.zero;
                         }
                     }
                 }
@@ -58,6 +77,7 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+    //updates camera and pickup object
     void FixedUpdate() {
         //mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -94,8 +114,13 @@ public class PlayerControl : MonoBehaviour
 
             //moving the object
             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
-            if (diff.sqrMagnitude > 0.001f) {
+            Vector3 closestToCenter = pickedObject.GetComponent<Collider>().ClosestPoint(transform.position);
+            Vector3 targetMovement = targetPos - pickedObject.transform.position;
+            if (diff.sqrMagnitude > 0.001f && (transform.position - (closestToCenter + targetMovement)).sqrMagnitude >= minPickupDistance * minPickupDistance) {
                 pickedBody.MovePosition(targetPos);
+            }
+            else {
+                pickedBody.velocity = Vector3.zero;
             }
             
         }
