@@ -76,6 +76,6 @@ public class Part : MonoBehaviour, I_PickupItem
         if (s_LookUpTable.ContainsKey(key)) return s_LookUpTable[key];
 
         key = new KeyValuePair<EItem, EItem>(itemRight, itemLeft); //swapped key.
-        return s_LookUpTable.ContainsKey(key) ? EPart.NONE : s_LookUpTable[key];
+        return !s_LookUpTable.ContainsKey(key) ? EPart.NONE : s_LookUpTable[key];
     }
 }
