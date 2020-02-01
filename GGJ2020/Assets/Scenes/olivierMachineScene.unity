@@ -617,7 +617,7 @@ Transform:
   m_LocalScale: {x: 0.2847712, y: 0.2847712, z: 0.2847712}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &299687699
 Rigidbody:
@@ -1073,7 +1073,7 @@ Transform:
   - {fileID: 1328592525}
   - {fileID: 834989066}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635084686
 GameObject:
@@ -1426,7 +1426,7 @@ Transform:
   m_LocalScale: {x: 0.2847712, y: 0.2847712, z: 0.2847712}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1008345269
 Rigidbody:
@@ -1628,7 +1628,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1328592519
 GameObject:
@@ -2156,6 +2156,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3191554167567640924}
   m_Mesh: {fileID: 1474718767060193754, guid: 3fb9a4abe55a53740b510bf6596cb555, type: 3}
+--- !u!1001 &4454936951320857323
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.6807
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4111
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668464465318077708, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2413025943971141407, guid: 5e19e00c52f0e4546a741cbc3570b55f,
+        type: 3}
+      propertyPath: m_Name
+      value: Exploding_Box_With_Mats
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e19e00c52f0e4546a741cbc3570b55f, type: 3}
 --- !u!4 &5006512735122930653
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2241,7 @@ Transform:
   - {fileID: 300478036}
   - {fileID: 552214617}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
 --- !u!23 &5104708518203200447
 MeshRenderer:
