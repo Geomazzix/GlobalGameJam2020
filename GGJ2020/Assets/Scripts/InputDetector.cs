@@ -55,8 +55,17 @@ public class InputDetector : MonoBehaviour
     public bool GetValidInput()
     {
         // if item is material return true;
-        if (amountOfObjects == 1 && (int)items[0].Type < 5) return true;
+        if (amountOfObjects == 1 && (int)items[0].Type < 5)
+        {
+            amountOfObjects = 0;
+            return true;  
+        }
         return false;
+    }
+
+    public void ClearItem()
+    {
+        items.Clear();
     }
 
 
