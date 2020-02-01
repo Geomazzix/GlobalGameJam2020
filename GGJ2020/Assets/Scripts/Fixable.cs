@@ -40,17 +40,7 @@ public class Fixable : PickupItem {
 
     // Update is called once per frame
     void Update() {
-        Debug.Log("update");
-        if (pickedUp)
-        {
-            Debug.Log("picked up");
-        }
-        if(editVolume != null)
-        {
-            Debug.Log("is in volume");
-        }
         if(pickedUp && editVolume != null) {
-            Debug.Log(editVolume.parts.Count);
             foreach(Part part in editVolume.parts)
             {
                 checkPivotForPart(part);
@@ -91,7 +81,6 @@ public class Fixable : PickupItem {
     }
 
     private void attach(Part a_part, int a_pivotIndex) {
-        Debug.Log("attaching");
         a_part.transform.parent = transform;
         a_part.transform.position = pivotList.transform.GetChild(a_pivotIndex).transform.position;
         taken[a_pivotIndex] = true;

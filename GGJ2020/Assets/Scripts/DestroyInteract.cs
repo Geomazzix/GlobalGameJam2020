@@ -7,6 +7,7 @@ public class DestroyInteract : PickupItem, I_Interactable
 
     public void onInteract()
     {
+        Debug.Log("hi");
         if (pickedUp) {
             releaseFromPlayer();
         }
@@ -24,6 +25,7 @@ public class DestroyInteract : PickupItem, I_Interactable
                 Go.transform.Translate(new Vector3(Random.Range(-.2f, .2f), Random.Range(-.2f, .2f), Random.Range(-.2f, .2f)));
                 Go.transform.SetParent(null);
             }
+
         }
         Invoke("disableColliders", 0.2f);
         Invoke("destroyEverything", 2.5f);
