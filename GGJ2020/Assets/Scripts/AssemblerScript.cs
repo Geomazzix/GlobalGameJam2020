@@ -33,6 +33,7 @@ public class AssemblerScript : MonoBehaviour
         if (!(left.GetValidInput() && right.GetValidInput()))
         {
             // give red light. text sign "Seriously?"
+            busy = false;
         }
         else
         {
@@ -48,6 +49,8 @@ public class AssemblerScript : MonoBehaviour
             }
             else
             {
+                left.ClearItem();
+                right.ClearItem();
                 animControllerLeftFlap.SetBool("shouldClose", true);
                 animControllerRightFlap.SetBool("shouldClose", true);
                 leftToDelete = leftItem.gameObject;

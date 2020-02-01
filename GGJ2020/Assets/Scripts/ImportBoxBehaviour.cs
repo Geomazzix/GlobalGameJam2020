@@ -17,7 +17,7 @@ public class ImportBoxBehaviour : MonoBehaviour
         for(int i =0; i<amountOfObjectsPerBox; ++i)
         {
            int randomMaterialToAdd = Random.Range(0,15);
-            randomMaterialToAdd %= 4;
+            randomMaterialToAdd %= instantiatableMaterials.Count;
             instantiatedMaterials.Add(Instantiate(instantiatableMaterials[randomMaterialToAdd],transform));
         }
 
