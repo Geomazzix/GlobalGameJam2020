@@ -15,4 +15,5 @@ public class TestPickupChild : MonoBehaviour, I_PickupItem
     {
         
     }
+
 }
