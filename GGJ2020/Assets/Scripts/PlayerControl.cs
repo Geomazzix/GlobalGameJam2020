@@ -28,8 +28,12 @@ public class PlayerControl : MonoBehaviour
 
         if (ev.type == EventType.KeyDown) {
             if(ev.keyCode == KeyCode.E) {
-                if(pickedObject != null) {
-                    pickedObject.GetComponent<I_PickupItem>().onInteract();
+                RaycastHit hit;
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, maxPickupDistance)) {
+                    I_Interactable interactable = hit.transform.gameObject.GetComponent<I_Interactable>();
+                    if(interactable != null) {
+                        interactable.onInteract();
+                    }
                 }
             }
         }
