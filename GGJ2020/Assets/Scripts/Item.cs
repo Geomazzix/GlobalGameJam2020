@@ -20,11 +20,11 @@ public class Item : MonoBehaviour, I_PickupItem
     private static int m_ItemCount = 0;
     private int m_Id;
 
-    [SerializeField] private string m_Name;
+    //[SerializeField] private string m_Name;
     [SerializeField] private EItem m_Type;
 
     public int Id => m_Id;
-    public string Name => m_Name;
+    //public string Name => m_Name;
     public EItem Type => m_Type;
 
     private void Awake()

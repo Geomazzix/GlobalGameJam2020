@@ -28,10 +28,11 @@ public class InputDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<I_PickupItem>() != null)
+        if (other.gameObject.GetComponent<I_PickupItem>() != null)
         {
             amountOfObjects++;
-            items.Add(other.gameObject.GetComponent<Item>());
+            Item test = other.gameObject.GetComponent<Item>();
+            items.Add(test);
         }
     }
 
@@ -41,7 +42,8 @@ public class InputDetector : MonoBehaviour
         if (other.gameObject.GetComponent<I_PickupItem>() != null)
         {
             amountOfObjects--;
-            items.Remove(other.gameObject.GetComponent<Item>());
+            Item test = other.gameObject.GetComponent<Item>();
+            items.Remove(test);
         }
     }
 
@@ -65,7 +67,7 @@ public class InputDetector : MonoBehaviour
     private BoxCollider inputCollider;
 
 
-    private List<Item> items;
+    private List<Item> items = new List<Item>();
 
     private int amountOfObjects = 0;
 

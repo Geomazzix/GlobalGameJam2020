@@ -36,8 +36,26 @@ public class AssemblerScript : MonoBehaviour
             animControllerRightFlap.SetBool("shouldClose", true);
             Item leftItem = left.GetItem();
             Item rightItem = right.GetItem();
+            EPart combo = Part.GetPossibleItemCombination(leftItem.Type, rightItem.Type);
+            if ((int)combo == -1)
+            {
+                // give feedback that bad combo has been made.
+                animControllerLeftFlap.SetBool("shouldClose", false);
+                animControllerRightFlap.SetBool("shouldClose", false);
+            }
+            else
+            {
+                Destroy(leftItem.gameObject);
+                Destroy(rightItem.gameObject);
+                animControllerPress.SetBool("shouldClose", true);
 
-            
+                // instantiate correct combo result.
+                // blaajkfnajkfjkafjkwaejkefwjklefjjkwenfjkwaejfl
+
+                // animControllerPress.SetBool("shouldClose", false);
+                animControllerLeftFlap.SetBool("shouldClose", false);
+                animControllerRightFlap.SetBool("shouldClose", false);
+            }
         }
     }
 
