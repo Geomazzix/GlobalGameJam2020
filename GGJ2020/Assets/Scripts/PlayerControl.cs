@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     //variables
     private float rotationX = 0;
     private bool wasClicked = false;
-    private GameObject pickedObject = null;
+    private PickupItem pickedObject = null;
 
     // Start is called before the first frame update
     void Start() {
@@ -53,8 +53,12 @@ public class PlayerControl : MonoBehaviour
                 if(pickedObject == null) {
                     RaycastHit hit;
                     if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, maxPickupDistance)) {
-                        if (hit.transform.gameObject.GetComponent<PickupItem>() != null) {
-                            pickedObject = hit.transform.gameObject;
+                        PickupItem pickup = hit.transform.gameObject.GetComponent<PickupItem>();
+                        if (pickup != null) {
+                            pickedObject = pickup;
+                            pickup.player = this;
+                            pickup.pickedUp = true;
+
                             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
                             pickedBody.useGravity = false;
                             pickedBody.velocity = Vector3.zero;
@@ -67,6 +71,11 @@ public class PlayerControl : MonoBehaviour
                 }
                 
             }
+        }
+        if (Input.GetMouseButtonDown(1) && pickedObject != null) {
+            Rigidbody pickedBody = pickedObject.transform.GetComponent<Rigidbody>();
+            releasePickup();
+            pickedBody.velocity = cameraTransform.forward * 10;
         }
         //resets wasClicked
         else {
@@ -130,10 +139,12 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void releasePickup() {
+    public void releasePickup() {
         Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
+        pickedObject.GetComponent<PickupItem>().pickedUp = false;
         pickedBody.useGravity = true;
         pickedBody.velocity = Vector3.zero;
+        pickedObject.player = null;
         pickedObject = null;
     }
 
