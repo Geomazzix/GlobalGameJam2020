@@ -2,4 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface I_PickupItem {}
+public interface I_PickupItem {
+    void onInteract();
+}
