@@ -5,7 +5,6 @@ using UnityEngine;
 public class Fixable : PickupItem {
 
     public float snapDistance = 5f;
-    public GameObject pivotPrefab;
 
     [SerializeField] private Transform[] pivots;
     private List<bool> taken = new List<bool>();
@@ -14,8 +13,6 @@ public class Fixable : PickupItem {
     void Start() {
         for(int k = 0; k < pivots.Length; k++) {
             taken.Add(false);
-            GameObject child = Instantiate(pivotPrefab, transform);
-            child.transform.Translate(pivots[k].position);
         }
     }
 
@@ -54,6 +51,7 @@ public class Fixable : PickupItem {
         a_part.transform.position = pivots[a_pivotIndex].position;
         taken[a_pivotIndex] = true;
         releaseFromPlayer();
+        editVolume.parts.Remove(a_part);
         a_part.releaseFromPlayer();
         Destroy(a_part.GetComponent<Part>());
         Destroy(a_part.GetComponent<Rigidbody>());
