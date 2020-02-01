@@ -21,13 +21,21 @@ public class DestroyInteract : MonoBehaviour, I_Interactable
     {
         Destroy(GetComponent<Rigidbody>());
         Destroy(GetComponent<Collider>());
-        for (int i = 0; i < transform.childCount; i++)
+        int count = transform.childCount;
+        for (int i = count; i > 0; --i)
         {
-            GameObject Go = transform.GetChild(i).gameObject;
+            GameObject Go = transform.GetChild(i - 1).gameObject;
             Go.GetComponent<Collider>().enabled = true;
             Go.AddComponent<Rigidbody>();
+
+            if(Go.GetComponent<Item>() != null)
+            {
+                Go.transform.Translate(new Vector3(Random.Range(-.2f, .2f), Random.Range(-.2f, .2f), Random.Range(-.2f, .2f)));
+                Go.transform.SetParent(null);
+            }
         }
         Invoke("disableColliders", 0.2f);
+        Invoke("destroyEverything", 2.5f);
     }
 
     void disableColliders()
@@ -37,6 +45,17 @@ public class DestroyInteract : MonoBehaviour, I_Interactable
             GameObject Go = transform.GetChild(i).gameObject;
             Destroy(Go.GetComponent<Collider>());
         }
+    }
+
+    void destroyEverything()
+    {
+        int count = transform.childCount;
+        for (int i = count; i > 0; i--)
+        {
+            GameObject Go = transform.GetChild(i - 1).gameObject;
+            Destroy(Go);
+        }
+        Destroy(gameObject);
     }
 
 }
