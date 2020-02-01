@@ -8,7 +8,6 @@ public class PlayerControl : MonoBehaviour
     public float mouseSensitivity;
     public Transform cameraTransform;
     public float moveSpeed;
-    public float itemFollowSpeed;
     public float maxPickupDistance;
     public float pickupObjectDistance;
     public float pickedupObjectVerticalOriginOffset;
