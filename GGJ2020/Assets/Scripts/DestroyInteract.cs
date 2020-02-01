@@ -7,7 +7,6 @@ public class DestroyInteract : PickupItem, I_Interactable
 
     public void onInteract()
     {
-        Debug.Log("hi");
         if (pickedUp) {
             releaseFromPlayer();
         }
