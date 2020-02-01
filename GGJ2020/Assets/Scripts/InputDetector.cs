@@ -13,13 +13,16 @@ public class InputDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(amountOfObjects==1)
+        if (inputIndicator != null)
         {
-            inputIndicator.SetActive(true);
-        }
-        else
-        {
-            inputIndicator.SetActive(false);
+            if (amountOfObjects == 1)
+            {
+                inputIndicator.SetActive(true);
+            }
+            else
+            {
+                inputIndicator.SetActive(false);
+            }
         }
     }
 
@@ -28,6 +31,7 @@ public class InputDetector : MonoBehaviour
         if(other.gameObject.GetComponent<I_PickupItem>() != null)
         {
             amountOfObjects++;
+            items.Add(other.gameObject.GetComponent<Item>());
         }
     }
 
@@ -37,9 +41,21 @@ public class InputDetector : MonoBehaviour
         if (other.gameObject.GetComponent<I_PickupItem>() != null)
         {
             amountOfObjects--;
+            items.Remove(other.gameObject.GetComponent<Item>());
         }
     }
 
+    public Item GetItem()
+    {
+        return items[0];
+    }
+
+    public bool GetValidInput()
+    {
+        // if item is material return true;
+        if (amountOfObjects == 1 && (int)items[0].Type < 5) return true;
+        return false;
+    }
 
 
     [SerializeField]
@@ -47,6 +63,9 @@ public class InputDetector : MonoBehaviour
 
     [SerializeField]
     private BoxCollider inputCollider;
+
+
+    private List<Item> items;
 
     private int amountOfObjects = 0;
 
