@@ -15,4 +15,9 @@ public class TestPickupChild : MonoBehaviour, I_PickupItem
     {
         
     }
+
+    public void onInteract()
+    {
+        Debug.Log("test interaction");
+    }
 }

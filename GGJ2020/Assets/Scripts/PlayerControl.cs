@@ -23,6 +23,19 @@ public class PlayerControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private void OnGUI() { 
+        Event ev = Event.current;
+
+        if (ev.type == EventType.KeyDown) {
+            if(ev.keyCode == KeyCode.E) {
+                if(pickedObject != null) {
+                    pickedObject.GetComponent<I_PickupItem>().onInteract();
+                }
+            }
+        }
+
+    }
+
     // Update is called once per frame
     void Update() {
 
@@ -60,6 +73,7 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+    //updates camera and pickup object
     void FixedUpdate() {
         //mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
