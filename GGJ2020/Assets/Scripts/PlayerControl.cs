@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     public float pickupObjectDistance;
     public float pickedupObjectVerticalOriginOffset;
     public float minPickupDistance;
+    public float pickupMoveSpeed;
 
     //variables
     private float rotationX = 0;
@@ -94,7 +95,7 @@ public class PlayerControl : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
         //movement
-        transform.Translate(new Vector3(horizontal, 0, vertical) * moveSpeed);
+        transform.Translate(new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime);
 
         //item following camera
         if (pickedObject != null) {
@@ -105,19 +106,14 @@ public class PlayerControl : MonoBehaviour
             //getting target position (corrected for collisions)
             Vector3 origin = cameraTransform.position + new Vector3(0, pickedupObjectVerticalOriginOffset, 0);
             Vector3 targetPos = origin + cameraTransform.forward * pickupObjectDistance;
-            RaycastHit hit;
             Vector3 diff = (targetPos - pickedObject.transform.position);
-            if (Physics.Raycast(pickedObject.transform.position, diff.normalized, out hit, diff.magnitude)) {
-                targetPos = hit.point;
-                diff = (targetPos - pickedObject.transform.position);
-            }
 
             //moving the object
             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
             Vector3 closestToCenter = pickedObject.GetComponent<Collider>().ClosestPoint(transform.position);
             Vector3 targetMovement = targetPos - pickedObject.transform.position;
-            if (diff.sqrMagnitude > 0.001f && (transform.position - (closestToCenter + targetMovement)).sqrMagnitude >= minPickupDistance * minPickupDistance) {
-                pickedBody.MovePosition(targetPos);
+            if (diff.sqrMagnitude > 0.00001f && (transform.position - (closestToCenter + targetMovement)).sqrMagnitude >= minPickupDistance * minPickupDistance) {
+                pickedBody.velocity = (targetPos - pickedObject.transform.position).normalized * Mathf.Min(pickupMoveSpeed, diff.magnitude / Time.deltaTime);
             }
             else {
                 pickedBody.velocity = Vector3.zero;
