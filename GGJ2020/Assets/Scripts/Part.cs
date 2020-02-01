@@ -8,7 +8,7 @@ public enum EPart
 {
     NONE = -1,
 
-    LOBSTER_CLAW = 0,
+    LOBSTER_CLAW = 5,
     JET_PACK,
     ROBOT_ARM,
     ROWING_THINGY,
@@ -28,9 +28,15 @@ public enum EPart
 /// <summary>
 /// The combined items.
 /// </summary>
-public class Part : Item
+public class Part : MonoBehaviour, I_PickupItem
 {
+    private static int m_ItemCount = 0;
+    private int m_Id;
+
+    [SerializeField] private string m_Name;
+    [SerializeField] private EItem m_Type;
     [SerializeField] private Vector3[] m_Pivots;
+
     private static readonly Dictionary<KeyValuePair<EItem, EItem>, EPart> s_LookUpTable = new Dictionary<KeyValuePair<EItem, EItem>, EPart>()
     {
         //Single matches without inverses.
@@ -52,6 +58,15 @@ public class Part : Item
         { new KeyValuePair<EItem, EItem>(EItem.RUBBER, EItem.RUBBER), EPart.BALL },
         { new KeyValuePair<EItem, EItem>(EItem.WOOD, EItem.WOOD), EPart.WOODEN_LEG }
     };
+    public int Id => m_Id;
+    public string Name => m_Name;
+    public EItem Type => m_Type;
+
+    private void Awake()
+    {
+        m_Id = m_ItemCount;
+        ++m_ItemCount;
+    }
 
     public Vector3 this[int i] => m_Pivots[i];
 
