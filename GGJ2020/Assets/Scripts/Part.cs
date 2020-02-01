@@ -34,7 +34,6 @@ public class Part : PickupItem
     private int m_Id;
 
     [SerializeField] private EPart m_Type;
-    [SerializeField] private Vector3[] m_Pivots;
 
     private static readonly Dictionary<KeyValuePair<EItem, EItem>, EPart> s_LookUpTable = new Dictionary<KeyValuePair<EItem, EItem>, EPart>()
     {
@@ -66,8 +65,6 @@ public class Part : PickupItem
         ++m_ItemCount;
     }
 
-    public Vector3 this[int i] => m_Pivots[i];
-
     public static EPart GetPossibleItemCombination(EItem itemLeft, EItem itemRight)
     {
         KeyValuePair<EItem, EItem> key = new KeyValuePair<EItem, EItem>(itemLeft, itemRight);
@@ -76,4 +73,14 @@ public class Part : PickupItem
         key = new KeyValuePair<EItem, EItem>(itemRight, itemLeft); //swapped key.
         return !s_LookUpTable.ContainsKey(key) ? EPart.NONE : s_LookUpTable[key];
     }
+
+    // Update is called once per frame
+    void Update() {
+        if (pickedUp && editVolume != null) {
+            foreach (Fixable fix in editVolume.fixables) {
+                fix.checkPivotForPart(this);
+            }
+        }
+    }
+
 }
