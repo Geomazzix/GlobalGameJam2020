@@ -135,6 +135,7 @@ MonoBehaviour:
   maxPickupDistance: 5
   pickupObjectDistance: 4
   pickedupObjectVerticalOriginOffset: 0.4
+  minPickupDistance: 10
 --- !u!136 &9019280153543155044
 CapsuleCollider:
   m_ObjectHideFlags: 0
