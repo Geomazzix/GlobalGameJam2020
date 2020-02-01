@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float maxPickupDistance;
     public float pickupObjectDistance;
     public float pickedupObjectVerticalOriginOffset;
+    public float minPickupDistance;
 
     //variables
     private float rotationX = 0;
@@ -38,6 +39,7 @@ public class PlayerControl : MonoBehaviour
                             pickedObject = hit.transform.gameObject;
                             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
                             pickedBody.useGravity = false;
+                            pickedBody.velocity = Vector3.zero;
                         }
                     }
                 }
@@ -94,8 +96,13 @@ public class PlayerControl : MonoBehaviour
 
             //moving the object
             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
-            if (diff.sqrMagnitude > 0.001f) {
+            Vector3 closestToCenter = pickedObject.GetComponent<Collider>().ClosestPoint(transform.position);
+            Vector3 targetMovement = targetPos - pickedObject.transform.position;
+            if (diff.sqrMagnitude > 0.001f && (transform.position - (closestToCenter + targetMovement)).sqrMagnitude >= minPickupDistance * minPickupDistance) {
                 pickedBody.MovePosition(targetPos);
+            }
+            else {
+                pickedBody.velocity = Vector3.zero;
             }
             
         }
