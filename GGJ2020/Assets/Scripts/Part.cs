@@ -8,21 +8,21 @@ public enum EPart
 {
     NONE = -1,
 
-    LOBSTER_CLAW = 5,
-    JET_PACK,
-    ROBOT_ARM,
-    ROWING_THINGY,
-    KNIFE,
-    WOODEN_LEG,
-    CLOTH_HANGER,
+    BALL = 5,
     CAPTAIN_HOOK,
-    UMBRELLA,
+    CLOTH_HANGER,
     FOX_TAIL,
     GARBAGE_BAG,
-    SCREW_DRIVER,
-    WHEEL,
+    JET_PACK,
+    KNIFE,
     LATEX_BOOT,
-    BALL,
+    LOBSTER_CLAW,
+    ROBOT_ARM,
+    ROWING_THINGY,
+    SCREW_DRIVER,
+    UMBRELLA,
+    WHEEL,
+    WOODEN_LEG
 }
 
 /// <summary>
@@ -33,8 +33,7 @@ public class Part : PickupItem
     private static int m_ItemCount = 0;
     private int m_Id;
 
-    [SerializeField] private string m_Name;
-    [SerializeField] private EItem m_Type;
+    [SerializeField] private EPart m_Type;
     [SerializeField] private Vector3[] m_Pivots;
 
     private static readonly Dictionary<KeyValuePair<EItem, EItem>, EPart> s_LookUpTable = new Dictionary<KeyValuePair<EItem, EItem>, EPart>()
@@ -59,8 +58,7 @@ public class Part : PickupItem
         { new KeyValuePair<EItem, EItem>(EItem.WOOD, EItem.WOOD), EPart.WOODEN_LEG }
     };
     public int Id => m_Id;
-    public string Name => m_Name;
-    public EItem Type => m_Type;
+    public EPart Type => m_Type;
 
     private void Awake()
     {

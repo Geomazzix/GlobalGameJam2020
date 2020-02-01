@@ -5,6 +5,8 @@ using UnityEngine;
 public class AssemblerScript : MonoBehaviour
 {
 
+    public List<GameObject> gameObjects;
+    public Transform spawnPointNewObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,8 @@ public class AssemblerScript : MonoBehaviour
 
     public void OnActivate()
     {
+        if (busy) return;
+        busy = true;
         // check if input is valid.
         if (!(left.GetValidInput() && right.GetValidInput()))
         {
@@ -35,8 +39,8 @@ public class AssemblerScript : MonoBehaviour
            
             Item leftItem = left.GetItem();
             Item rightItem = right.GetItem();
-            EPart combo = Part.GetPossibleItemCombination(leftItem.Type, rightItem.Type);
-            if ((int)combo == -1)
+            partToSpawn = Part.GetPossibleItemCombination(leftItem.Type, rightItem.Type);
+            if ((int)partToSpawn == -1)
             {
                 // give feedback that bad combo has been made.
                 animControllerLeftFlap.SetBool("shouldClose", false);
@@ -50,16 +54,17 @@ public class AssemblerScript : MonoBehaviour
                 rightToDelete = rightItem.gameObject;
                 // instantiate correct combo result.
 
-                Invoke("openFlapsLate",2.5f);
-                //Invoke("closePressLate",1.5f);
-                //Invoke("openPressLate",3.5f);
+                Invoke("openFlapsLate",3.5f);
+                Invoke("closePressLate",1.5f);
+                Invoke("openPressLate",3.5f);
             }
         }
     }
 
     public void SpawnResult()
     {
-
+        Instantiate(gameObjects[(int)partToSpawn - 5], spawnPointNewObjects);
+        busy = false;
     }
 
     private Animator animControllerPress;
@@ -83,10 +88,12 @@ public class AssemblerScript : MonoBehaviour
     void openPressLate()
     {
         animControllerPress.SetBool("shouldClose", false);
+        SpawnResult();
     }
 
     private GameObject leftToDelete, rightToDelete;
-
+    private bool busy = false;
+    private EPart partToSpawn;
     [SerializeField]
     private InputDetector left, right;
 
