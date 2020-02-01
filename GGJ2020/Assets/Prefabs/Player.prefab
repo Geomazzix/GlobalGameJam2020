@@ -132,10 +132,10 @@ MonoBehaviour:
   mouseSensitivity: 200
   cameraTransform: {fileID: 9019280151690693489}
   moveSpeed: 300
-  maxPickupDistance: 4
-  pickupObjectDistance: 2.5
+  maxPickupDistance: 2.2
+  pickupObjectDistance: 2.2
   pickedupObjectVerticalOriginOffset: 0
-  minPickupDistance: 1.5
+  minPickupDistance: 1
   pickupMoveSpeed: 200
 --- !u!136 &9019280153543155044
 CapsuleCollider:
