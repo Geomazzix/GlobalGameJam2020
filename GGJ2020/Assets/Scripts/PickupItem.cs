@@ -44,10 +44,10 @@ public class PickupItem : MonoBehaviour {
             editVolume.parts.Add(this as Part);
         }
         wasInEditVolume = true;
-        Rigidbody body = GetComponent<Rigidbody>();
+       /* Rigidbody body = GetComponent<Rigidbody>();
         body.useGravity = false;
         body.isKinematic = true;
-        body.velocity = Vector3.zero;
+        body.velocity = Vector3.zero;*/
     }
 
     private void release() {
@@ -60,10 +60,10 @@ public class PickupItem : MonoBehaviour {
             }
         }
         editVolume = null;
-        wasInEditVolume = false;
+        /*wasInEditVolume = false;
         Rigidbody body = GetComponent<Rigidbody>();
         body.useGravity = true;
-        body.isKinematic = false;
+        body.isKinematic = false;*/
     }
 
 }
