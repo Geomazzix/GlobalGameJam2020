@@ -15,11 +15,11 @@
 /[Mm]emoryCaptures/
 
 #FMod ignores.
-/FMODStudioCache.asset
-/FMODStudioCache.asset.meta
-fmod.log
-fmod_editor.log
-*log
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+/fmod.log
+/fmod_editor.log
+*.log
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
