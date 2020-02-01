@@ -18,10 +18,13 @@ public class PlayerControl : MonoBehaviour
     private float rotationX = 0;
     private bool wasClicked = false;
     private PickupItem pickedObject = null;
+    private Canvas m_PauseCanvas;
 
     // Start is called before the first frame update
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        m_PauseCanvas = FindObjectOfType<Canvas>();
+        m_PauseCanvas.gameObject.SetActive(false);
     }
 
     private void OnGUI() { 
@@ -43,6 +46,14 @@ public class PlayerControl : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            m_PauseCanvas.gameObject.SetActive(true);
+            enabled = false;
+        }
 
         //item interactions
         if (Input.GetMouseButtonDown(0)) {
@@ -90,7 +101,6 @@ public class PlayerControl : MonoBehaviour
                 releasePickup();
             }
         }
-
     }
 
     //updates camera and pickup object
@@ -125,7 +135,7 @@ public class PlayerControl : MonoBehaviour
             Vector3 diff = (targetPos - pickedObject.transform.position);
 
             //moving the object
-            Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
+            Rigidbody pickedBody = pickedObject.GetComponent<Rigidbody>();
             Vector3 closestToCenter = pickedObject.GetComponent<Collider>().ClosestPoint(transform.position);
             Vector3 targetMovement = targetPos - pickedObject.transform.position;
             Vector3 closestDiff = (transform.position - (closestToCenter + targetMovement));
@@ -135,12 +145,11 @@ public class PlayerControl : MonoBehaviour
             else {
                 pickedBody.velocity = Vector3.zero;
             }
-
         }
     }
 
     public void releasePickup() {
-        Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
+        Rigidbody pickedBody = pickedObject.GetComponent<Rigidbody>();
         pickedObject.GetComponent<PickupItem>().pickedUp = false;
         pickedBody.useGravity = true;
         pickedBody.velocity = Vector3.zero;
