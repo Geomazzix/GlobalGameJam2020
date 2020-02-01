@@ -53,7 +53,7 @@ public class PlayerControl : MonoBehaviour
                 if(pickedObject == null) {
                     RaycastHit hit;
                     if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, maxPickupDistance)) {
-                        if (hit.transform.gameObject.GetComponent<I_PickupItem>() != null) {
+                        if (hit.transform.gameObject.GetComponent<PickupItem>() != null) {
                             pickedObject = hit.transform.gameObject;
                             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
                             pickedBody.useGravity = false;
@@ -63,10 +63,7 @@ public class PlayerControl : MonoBehaviour
                 }
                 //throw the picked up item
                 else {
-                    Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
-                    pickedBody.useGravity = true;
-                    pickedBody.velocity = Vector3.zero;
-                    pickedObject = null;
+                    releasePickup();
                 }
                 
             }
@@ -74,6 +71,15 @@ public class PlayerControl : MonoBehaviour
         //resets wasClicked
         else {
             wasClicked = false;
+        }
+
+        //releases item if its too far away
+        if(pickedObject != null)
+        {
+            if((pickedObject.transform.position - transform.position).magnitude > maxPickupDistance)
+            {
+                releasePickup();
+            }
         }
 
     }
@@ -95,6 +101,7 @@ public class PlayerControl : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
         //movement
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.Translate(new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime);
 
         //item following camera
@@ -119,8 +126,15 @@ public class PlayerControl : MonoBehaviour
             else {
                 pickedBody.velocity = Vector3.zero;
             }
-            
+
         }
+    }
+
+    private void releasePickup() {
+        Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
+        pickedBody.useGravity = true;
+        pickedBody.velocity = Vector3.zero;
+        pickedObject = null;
     }
 
 }

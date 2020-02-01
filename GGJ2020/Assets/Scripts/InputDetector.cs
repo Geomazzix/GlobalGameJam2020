@@ -28,7 +28,7 @@ public class InputDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<I_PickupItem>() != null)
+        if (other.gameObject.GetComponent<PickupItem>() != null)
         {
             amountOfObjects++;
             Item test = other.gameObject.GetComponent<Item>();
@@ -39,7 +39,7 @@ public class InputDetector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<I_PickupItem>() != null)
+        if (other.gameObject.GetComponent<PickupItem>() != null)
         {
             amountOfObjects--;
             Item test = other.gameObject.GetComponent<Item>();

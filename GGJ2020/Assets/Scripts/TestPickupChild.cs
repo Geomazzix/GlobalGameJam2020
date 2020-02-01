@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestPickupChild : MonoBehaviour, I_PickupItem
+public class TestPickupChild : PickupItem
 {
     // Start is called before the first frame update
     void Start()

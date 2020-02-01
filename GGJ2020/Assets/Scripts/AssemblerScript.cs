@@ -32,8 +32,7 @@ public class AssemblerScript : MonoBehaviour
         }
         else
         {
-            animControllerLeftFlap.SetBool("shouldClose",true);
-            animControllerRightFlap.SetBool("shouldClose", true);
+           
             Item leftItem = left.GetItem();
             Item rightItem = right.GetItem();
             EPart combo = Part.GetPossibleItemCombination(leftItem.Type, rightItem.Type);
@@ -45,16 +44,15 @@ public class AssemblerScript : MonoBehaviour
             }
             else
             {
-                Destroy(leftItem.gameObject);
-                Destroy(rightItem.gameObject);
-                animControllerPress.SetBool("shouldClose", true);
-
+                animControllerLeftFlap.SetBool("shouldClose", true);
+                animControllerRightFlap.SetBool("shouldClose", true);
+                leftToDelete = leftItem.gameObject;
+                rightToDelete = rightItem.gameObject;
                 // instantiate correct combo result.
-                // blaajkfnajkfjkafjkwaejkefwjklefjjkwenfjkwaejfl
 
-                // animControllerPress.SetBool("shouldClose", false);
-                animControllerLeftFlap.SetBool("shouldClose", false);
-                animControllerRightFlap.SetBool("shouldClose", false);
+                Invoke("openFlapsLate",2.5f);
+                //Invoke("closePressLate",1.5f);
+                //Invoke("openPressLate",3.5f);
             }
         }
     }
@@ -68,6 +66,26 @@ public class AssemblerScript : MonoBehaviour
     private Animator animControllerLeftFlap;
     private Animator animControllerRightFlap;
 
+
+    void openFlapsLate()
+    {
+        Destroy(leftToDelete);
+        Destroy(rightToDelete);
+        animControllerLeftFlap.SetBool("shouldClose", false);
+        animControllerRightFlap.SetBool("shouldClose", false);      
+    }
+
+    void closePressLate()
+    {
+        animControllerPress.SetBool("shouldClose", true);
+    }
+
+    void openPressLate()
+    {
+        animControllerPress.SetBool("shouldClose", false);
+    }
+
+    private GameObject leftToDelete, rightToDelete;
 
     [SerializeField]
     private InputDetector left, right;

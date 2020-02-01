@@ -28,7 +28,7 @@ public enum EPart
 /// <summary>
 /// The combined items.
 /// </summary>
-public class Part : MonoBehaviour, I_PickupItem
+public class Part : PickupItem
 {
     private static int m_ItemCount = 0;
     private int m_Id;

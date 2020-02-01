@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979114599054772373}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 92802f3f5f76db940a1ee6996e9c40fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -107,7 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d23622a2866c7841ad112512110288f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: Wood
   m_Type: 1
 --- !u!54 &105610314582066941
 Rigidbody:
