@@ -14,11 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FmodProject/GGJ2020/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637161140641685256
+  lastModified: 637161166788140838
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 780
+  Exists: 1
+--- !u!114 &-8098963728549422025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/GGJ2020/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637161166788321071
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &-6565248749202804002
 MonoBehaviour:
@@ -35,7 +53,7 @@ MonoBehaviour:
   Path: event:/mainTheme
   guid: e426bb37a1ebc741b61a5cb9c240c2d6
   Banks:
-  - {fileID: 1464028974694940836}
+  - {fileID: -8098963728549422025}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -58,7 +76,7 @@ MonoBehaviour:
   Path: event:/SFX
   guid: eea391cffd2f1a45bcc124f8e9f6a700
   Banks:
-  - {fileID: 1464028974694940836}
+  - {fileID: -8098963728549422025}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -98,16 +116,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8493041524234280827}
-  - {fileID: 1464028974694940836}
+  - {fileID: -8098963728549422025}
   EditorEvents:
   - {fileID: -6565248749202804002}
   - {fileID: -5296309639986238006}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1464028974694940836}
+  - {fileID: -8098963728549422025}
   StringsBanks:
   - {fileID: -8493041524234280827}
-  stringsBankWriteTime: 637161140641685256
+  stringsBankWriteTime: 637161166788140838
   cacheVersion: 3
 --- !u!114 &1464028974694940836
 MonoBehaviour:
