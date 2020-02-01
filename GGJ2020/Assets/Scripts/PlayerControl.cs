@@ -53,7 +53,7 @@ public class PlayerControl : MonoBehaviour
                 if(pickedObject == null) {
                     RaycastHit hit;
                     if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, maxPickupDistance)) {
-                        if (hit.transform.gameObject.GetComponent<I_PickupItem>() != null) {
+                        if (hit.transform.gameObject.GetComponent<PickupItem>() != null) {
                             pickedObject = hit.transform.gameObject;
                             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
                             pickedBody.useGravity = false;

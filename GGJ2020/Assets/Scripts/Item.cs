@@ -15,7 +15,7 @@ public enum EItem
 /// <summary>
 /// Represents an interactive item in the game for the player, used in order to create parts to repair toys.
 /// </summary>
-public class Item : MonoBehaviour, I_PickupItem
+public class Item : PickupItem
 {
     private static int m_ItemCount = 0;
     private int m_Id;
