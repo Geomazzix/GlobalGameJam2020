@@ -8,7 +8,8 @@ public enum EItem
     METAL = 0,
     WOOD,
     CLOTH,
-    RUBBER
+    RUBBER,
+    PLASTIC
 }
 
 /// <summary>
