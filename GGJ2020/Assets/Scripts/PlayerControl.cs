@@ -112,7 +112,8 @@ public class PlayerControl : MonoBehaviour
             Rigidbody pickedBody = pickedObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
             Vector3 closestToCenter = pickedObject.GetComponent<Collider>().ClosestPoint(transform.position);
             Vector3 targetMovement = targetPos - pickedObject.transform.position;
-            if (diff.sqrMagnitude > 0.00001f && (transform.position - (closestToCenter + targetMovement)).sqrMagnitude >= minPickupDistance * minPickupDistance) {
+            Vector3 closestDiff = (transform.position - (closestToCenter + targetMovement));
+            if (diff.sqrMagnitude > 0.00001f && (Mathf.Abs(closestDiff.x) >= minPickupDistance || Mathf.Abs(closestDiff.z) >= minPickupDistance)) {
                 pickedBody.velocity = (targetPos - pickedObject.transform.position).normalized * Mathf.Min(pickupMoveSpeed, diff.magnitude / Time.deltaTime);
             }
             else {
