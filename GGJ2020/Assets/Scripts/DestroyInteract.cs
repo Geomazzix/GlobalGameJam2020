@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyInteract : MonoBehaviour, I_Interactable
+public class DestroyInteract : PickupItem, I_Interactable
 {
 
     // Start is called before the first frame update
@@ -19,6 +19,9 @@ public class DestroyInteract : MonoBehaviour, I_Interactable
 
     public void onInteract()
     {
+        if (pickedUp) {
+            releaseFromPlayer();
+        }
         Destroy(GetComponent<Rigidbody>());
         Destroy(GetComponent<Collider>());
         int count = transform.childCount;
