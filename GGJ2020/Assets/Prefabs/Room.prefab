@@ -554,6 +554,7 @@ MonoBehaviour:
     type: 3}
   m_Toys:
   - {fileID: 8828875783644661425, guid: 26df25aa88efb6845bbb8d6063ca5968, type: 3}
+  despawnSound: {fileID: 8300000, guid: ad0b6472dd7f16f48a9a8c9511f248f2, type: 3}
 --- !u!1 &9024755300567985542
 GameObject:
   m_ObjectHideFlags: 0

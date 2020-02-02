@@ -8,6 +8,7 @@ public class InsertBeltDelivery : MonoBehaviour
     [SerializeField] private Transform m_SpawnPoint;
     [SerializeField] private GameObject m_MaterialBoxPrefab;
     [SerializeField] private GameObject[] m_Toys;
+    public AudioClip despawnSound;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class InsertBeltDelivery : MonoBehaviour
                 SpawnNewBrokenToy();
                 Invoke("SpawnNewItemCrate", 2);
                 Destroy(other.gameObject);
+                AudioSource playSource = FindObjectOfType<SoundController>().PlayAudioSource(despawnSound, transform.position);
             }
         }
     }
