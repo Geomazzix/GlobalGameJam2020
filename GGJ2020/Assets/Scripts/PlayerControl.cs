@@ -16,9 +16,11 @@ public class PlayerControl : MonoBehaviour
 
     //variables
     private float rotationX = 0;
+    private float itemRotationX = 0;
     private bool wasClicked = false;
     private PickupItem pickedObject = null;
     private Canvas m_PauseCanvas;
+    private Vector3 pickupSubRotation;
 
     // Start is called before the first frame update
     void Start() {
@@ -113,11 +115,18 @@ public class PlayerControl : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * Time.deltaTime;
 
+        //pickup rotation
+        if(pickedObject != null && Input.GetMouseButton(2)) {
+            itemRotationX -= mouseY;
+            pickupSubRotation += Vector3.up * mouseX + Vector3.right * mouseY;
+        }
         //camera rotation
-        rotationX -= mouseY;
-        rotationX = Mathf.Clamp(rotationX, -90, 90);
-        cameraTransform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.Rotate(Vector3.up * mouseX);
+        else {
+            rotationX -= mouseY;
+            rotationX = Mathf.Clamp(rotationX, -90, 90);
+            cameraTransform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            transform.Rotate(Vector3.up * mouseX);
+        }
 
         //movement
         GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -127,7 +136,7 @@ public class PlayerControl : MonoBehaviour
         if (pickedObject != null) {
 
             //rotating with camera
-            pickedObject.transform.rotation = cameraTransform.rotation;
+            pickedObject.transform.rotation = cameraTransform.rotation * Quaternion.Euler(pickupSubRotation);
 
             //getting target position (corrected for collisions)
             Vector3 origin = cameraTransform.position + new Vector3(0, pickedupObjectVerticalOriginOffset, 0);
