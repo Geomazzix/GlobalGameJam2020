@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+GGJ2020/Assets/Plugins.meta~develop
+
+GGJ2020/Assets/Plugins.meta~HEAD
+
+GGJ2020/Assets/Plugins/FMOD/lib.meta~develop
+
+GGJ2020/Assets/Plugins/FMOD/lib.meta~HEAD
