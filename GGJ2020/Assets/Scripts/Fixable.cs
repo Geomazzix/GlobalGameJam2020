@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fixable : PickupItem {
 
-    public float snapDistance = 0.1f;
+    public float snapDistance = 0.3f;
 
     public GameObject toBreak;
     public GameObject pivotList;
@@ -52,21 +52,23 @@ public class Fixable : PickupItem {
         Debug.Log("checking for part pivot");
         float closestSqrLength = float.PositiveInfinity;
         int closest = -1;
+        Vector3 lastDiff = Vector3.zero;
         for(int k = 0; k < pivotList.transform.childCount; k++) {
             if (!taken[k]) {
                 Vector3 pivotWorld = pivotList.transform.GetChild(k).transform.position;
-                Vector3 partWorld = a_part.transform.position;
+                Vector3 partWorld = a_part.GetComponent<Collider>().ClosestPoint(pivotWorld);
                 Vector3 diff = (pivotWorld - partWorld);
                 float currentSqr = diff.sqrMagnitude;
                 if (currentSqr < closestSqrLength) {
                     closestSqrLength = currentSqr;
                     closest = k;
+                    lastDiff = diff;
                 }
             }
         }
         if(closest > -1) {
             if(closestSqrLength <= snapDistance * snapDistance) {
-                attach(a_part, closest);
+                attach(a_part, closest, lastDiff);
             }
         }
     }
@@ -80,9 +82,9 @@ public class Fixable : PickupItem {
         return true;
     }
 
-    private void attach(Part a_part, int a_pivotIndex) {
+    private void attach(Part a_part, int a_pivotIndex, Vector3 diff) {
         a_part.transform.parent = transform;
-        a_part.transform.position = pivotList.transform.GetChild(a_pivotIndex).transform.position;
+        a_part.transform.position += diff;
         taken[a_pivotIndex] = true;
         releaseFromPlayer();
         editVolume.parts.Remove(a_part);
