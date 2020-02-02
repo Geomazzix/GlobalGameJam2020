@@ -27,8 +27,19 @@ public class InsertBeltDelivery : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        SpawnNewItemCrate();
-        SpawnNewBrokenToy();
+        if(other.gameObject.GetComponent<Fixable>() != null)
+        {
+            if (other.gameObject.GetComponent<Fixable>().isFixed())
+            {
+                SpawnNewBrokenToy();
+                Invoke("SpawnNewItemCrate", 2);
+                Destroy(other.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        
     }
 }

@@ -17,12 +17,6 @@ public class TransportBelt : MonoBehaviour
     {
         if (other.GetComponent<Rigidbody>() == null) return;
 
-        if (m_Type == ETransportBeltType.OUT)
-        {
-            if (other.GetComponent<Fixable>() != null && !other.GetComponent<Fixable>().isFixed())
-                return;
-        }
-
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         Vector3 velocity = new Vector3(
