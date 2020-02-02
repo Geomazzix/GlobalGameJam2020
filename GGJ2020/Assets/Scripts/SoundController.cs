@@ -12,7 +12,7 @@ public class SoundController : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void PlayAudioSource(AudioClip sfx, Vector3 position)
+    public AudioSource PlayAudioSource(AudioClip sfx, Vector3 position)
     {
         GameObject gm = Instantiate(new GameObject(), position, Quaternion.identity);
         AudioSource source = gm.AddComponent<AudioSource>();
@@ -22,6 +22,7 @@ public class SoundController : MonoBehaviour
         source.Play();
         playingEmitters.Add(gm);
         Invoke("deleteSoundSource", sfx.length + 0.5f);
+        return source;
     }
 
     public void deleteSoundSource()
