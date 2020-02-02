@@ -9,9 +9,13 @@ public class SoundController : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void PlayAudioSource(AudioSource prefab, Vector3 position)
+    public void PlayAudioSource(AudioClip sfx, Vector3 position)
     {
-        GameObject gm = Instantiate(prefab.gameObject, position, Quaternion.identity);
-        gm.GetComponent<AudioSource>().Play();
+        GameObject gm = Instantiate(new GameObject(), position, Quaternion.identity);
+        AudioSource source = gm.AddComponent<AudioSource>();
+        source.clip = sfx;
+        source.minDistance = 0.5f;
+        source.maxDistance = 4;
+        source.Play();
     }
 }
