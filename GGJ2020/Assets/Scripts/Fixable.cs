@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fixable : PickupItem {
 
-    public float snapDistance = 0.3f;
+    public float snapDistance = 0.1f;
 
     public GameObject toBreak;
     public GameObject pivotList;
@@ -19,6 +19,9 @@ public class Fixable : PickupItem {
         {
             int childCount = toBreak.transform.childCount;
             int index = Random.Range(0, childCount);
+            while (keepList.Contains(index)) {
+                index = Random.Range(0, childCount);
+            }
             Destroy(toBreak.transform.GetChild(index).gameObject);
             keepList.Add(index);
         }
@@ -32,7 +35,7 @@ public class Fixable : PickupItem {
                 }
             }
         }
-        for (int k = 0; k < pivotList.transform.childCount; k++)
+        foreach(int dummy in keepList)
         {
             taken.Add(false);
         }
@@ -40,16 +43,18 @@ public class Fixable : PickupItem {
 
     // Update is called once per frame
     void Update() {
-        if(pickedUp && editVolume != null) {
-            foreach(Part part in editVolume.parts)
-            {
-                checkPivotForPart(part);
+        if (pickedUp && editVolume != null)
+        {
+            if (!isFixed()) {
+                foreach (Part part in editVolume.parts)
+                {
+                    checkPivotForPart(part);
+                }
             }
         }
     }
 
     public void checkPivotForPart(Part a_part) {
-        Debug.Log("checking for part pivot");
         float closestSqrLength = float.PositiveInfinity;
         int closest = -1;
         Vector3 lastDiff = Vector3.zero;
