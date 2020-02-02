@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7515640957890378536}
   - component: {fileID: 7515640957890378539}
   - component: {fileID: 7515640957890378538}
-  - component: {fileID: 2670098444918991672}
   - component: {fileID: 5256839358619680188}
   - component: {fileID: 8772872510201081804}
+  - component: {fileID: -3453202094846018280}
   m_Layer: 0
   m_Name: Part_Garbage_Bag
   m_TagString: Untagged
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2670098444918991672
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7515640957890378540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5573580799846109427, guid: 663d5e538252f6e439b6bed51011a94c, type: 3}
 --- !u!54 &5256839358619680188
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   pickedUp: 0
   player: {fileID: 0}
   m_Type: 9
+--- !u!65 &-3453202094846018280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7515640957890378540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24285695, y: 0.40231192, z: 0.23097068}
+  m_Center: {x: 0, y: -0.1948598, z: 0}

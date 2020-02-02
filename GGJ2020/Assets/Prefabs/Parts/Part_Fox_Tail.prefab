@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3238795500865284480}
   - component: {fileID: 3238795500865284483}
   - component: {fileID: 3238795500865284482}
-  - component: {fileID: 6820450267792420255}
   - component: {fileID: 885629626071297812}
   - component: {fileID: 4396051901130014052}
+  - component: {fileID: 32739878755871652}
   m_Layer: 0
   m_Name: Part_Fox_Tail
   m_TagString: Untagged
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6820450267792420255
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3238795500865284484}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1569360416737583384, guid: ffbb7e40a0d68224e953603d3da26de4, type: 3}
 --- !u!54 &885629626071297812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   pickedUp: 0
   player: {fileID: 0}
   m_Type: 8
+--- !u!65 &32739878755871652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238795500865284484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03520721, y: 0.11127672, z: 0.03593786}
+  m_Center: {x: 0.0042306883, y: 0.046895877, z: -9.313226e-10}

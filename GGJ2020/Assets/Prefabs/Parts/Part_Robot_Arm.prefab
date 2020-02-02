@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 112753928143659674}
   - component: {fileID: 112753928143659673}
   - component: {fileID: 112753928143659672}
-  - component: {fileID: 1517676917730041658}
   - component: {fileID: 2389288466031027214}
   - component: {fileID: 1181068629256828542}
+  - component: {fileID: -3859432739829149288}
   m_Layer: 0
   m_Name: Part_Robot_Arm
   m_TagString: Untagged
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1517676917730041658
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112753928143659678}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7875615444233757513, guid: a8be2b39f658e9c48b3919f42597e102, type: 3}
 --- !u!54 &2389288466031027214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   pickedUp: 0
   player: {fileID: 0}
   m_Type: 14
+--- !u!65 &-3859432739829149288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112753928143659678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39505646, y: 0.96598476, z: 0.12232778}
+  m_Center: {x: -0.13785625, y: -0.48077127, z: 0}
