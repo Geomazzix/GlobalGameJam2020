@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DestroyInteract : PickupItem, I_Interactable
 {
+    public AudioClip destroySound;
+
     public void onInteract()
     {
         if (pickedUp) {
@@ -25,6 +27,8 @@ public class DestroyInteract : PickupItem, I_Interactable
             }
 
         }
+        AudioSource playSource = FindObjectOfType<SoundController>().PlayAudioSource(destroySound, transform.position);
+        playSource.volume = 0.25f;
         Invoke("disableColliders", 0.2f);
         Invoke("destroyEverything", 2.5f);
     }
