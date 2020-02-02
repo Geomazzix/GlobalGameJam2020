@@ -223,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114769678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +584,11 @@ PrefabInstance:
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 547e609b6d30f2342a5f933e848d29d7, type: 3}
+    - target: {fileID: 9019280153543155045, guid: 4835226de688510458775fc4938aecbe,
+        type: 3}
+      propertyPath: m_PauseCanvas
+      value: 
+      objectReference: {fileID: 114769680}
     - target: {fileID: 9019280153543155046, guid: 4835226de688510458775fc4938aecbe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1615,7 +1620,7 @@ MonoBehaviour:
           m_StringArgument: je moeder
           m_BoolArgument: 0
         m_CallState: 2
-  buttonSound: {fileID: 8300000, guid: 72dfd866bb7d91d4db791fd827b8b631, type: 3}
+  buttonSound: {fileID: 0}
 --- !u!64 &924047697
 MeshCollider:
   m_ObjectHideFlags: 0
