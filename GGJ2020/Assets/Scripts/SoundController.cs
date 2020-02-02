@@ -11,7 +11,8 @@ public class SoundController : MonoBehaviour
 
     public void PlayAudioSource(AudioClip sfx, Vector3 position)
     {
-        GameObject gm = Instantiate(new GameObject(), position, Quaternion.identity);
+        GameObject gm = new GameObject();
+        gm.transform.position = position;
         AudioSource source = gm.AddComponent<AudioSource>();
         source.clip = sfx;
         source.minDistance = 0.5f;
