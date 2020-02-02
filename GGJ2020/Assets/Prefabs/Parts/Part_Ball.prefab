@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5944193682778611572}
   - component: {fileID: 5944193682778611575}
   - component: {fileID: 5944193682778611574}
-  - component: {fileID: 5944193682778611569}
+  - component: {fileID: 6345625694998247268}
   - component: {fileID: 8270549020957219296}
   - component: {fileID: 4867667828697615248}
   m_Layer: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944193682778611568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalScale: {x: 600, y: 600, z: 600}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944193682778611568}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2342459666381787544, guid: 3e97a181ee99c884aa16d3bfe4fdd21b, type: 3}
 --- !u!23 &5944193682778611574
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c139576686423a84181070ed7bc9e782, type: 2}
+  - {fileID: 2100000, guid: 034b42288be61a541ad9e4ee5f952d6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,18 +82,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5944193682778611569
-BoxCollider:
+--- !u!135 &6345625694998247268
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944193682778611568}
-  m_Material: {fileID: 13400000, guid: 92802f3f5f76db940a1ee6996e9c40fc, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.0086374935
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8270549020957219296
 Rigidbody:
@@ -123,5 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a99d2cc1d696734abc13645bc0c55fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Type: 19
-  m_Pivots: []
+  pickedUp: 0
+  player: {fileID: 0}
+  m_Type: 5

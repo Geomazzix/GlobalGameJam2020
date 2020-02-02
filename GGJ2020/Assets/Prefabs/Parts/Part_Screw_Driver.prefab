@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233578885032793824}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.000000014901159, y: -0.000000024383382, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalScale: {x: 35, y: 35, z: 35}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
 --- !u!33 &7233578885032793831
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233578885032793824}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2954858793080512207, guid: 208664bf57cb0ce4f8b1be907a471c73, type: 3}
 --- !u!23 &7233578885032793830
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c139576686423a84181070ed7bc9e782, type: 2}
+  - {fileID: 670224309865224971, guid: 208664bf57cb0ce4f8b1be907a471c73, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,12 +89,12 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233578885032793824}
-  m_Material: {fileID: 13400000, guid: 92802f3f5f76db940a1ee6996e9c40fc, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7380224, y: 0.05223684, z: 0.082920775}
+  m_Center: {x: 0.361284, y: 0.0000000027939682, z: 0.041460387}
 --- !u!54 &4961336769692471408
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -123,5 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a99d2cc1d696734abc13645bc0c55fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedUp: 0
+  player: {fileID: 0}
   m_Type: 16
-  m_Pivots: []
