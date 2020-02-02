@@ -812,6 +812,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.12
       objectReference: {fileID: 0}
+    - target: {fileID: 2844539499790987844, guid: a0e6b87cd1803bf4b9c1b7993c4528ce,
+        type: 3}
+      propertyPath: beltSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f54ac467c0fa2424ca9540dfb546f1f9, type: 3}
     - target: {fileID: 3118423082303963998, guid: a0e6b87cd1803bf4b9c1b7993c4528ce,
         type: 3}
       propertyPath: m_RootOrder
@@ -892,6 +897,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.4223083
       objectReference: {fileID: 0}
+    - target: {fileID: 5900732037580134147, guid: a0e6b87cd1803bf4b9c1b7993c4528ce,
+        type: 3}
+      propertyPath: beltSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f54ac467c0fa2424ca9540dfb546f1f9, type: 3}
     - target: {fileID: 5975972844609073766, guid: a0e6b87cd1803bf4b9c1b7993c4528ce,
         type: 3}
       propertyPath: m_LocalPosition.z

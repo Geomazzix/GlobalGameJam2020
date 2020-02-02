@@ -17,7 +17,8 @@ public class TransportBelt : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<SoundController>().PlayAudioSource(beltSound, transform.position);
+       AudioSource source=  FindObjectOfType<SoundController>().PlayAudioSource(beltSound, transform.position);
+        source.volume = 0.5f;
     }
 
 
