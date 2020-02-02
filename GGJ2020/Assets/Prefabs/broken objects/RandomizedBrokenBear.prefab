@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickedUp: 0
   player: {fileID: 0}
-  snapDistance: 0.5
+  snapDistance: 0.1
   toBreak: {fileID: 581172725650635310}
   pivotList: {fileID: 2410573556858608817}
   brokenPartCount: 2

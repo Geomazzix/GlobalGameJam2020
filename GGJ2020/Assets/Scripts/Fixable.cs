@@ -19,6 +19,9 @@ public class Fixable : PickupItem {
         {
             int childCount = toBreak.transform.childCount;
             int index = Random.Range(0, childCount);
+            while (keepList.Contains(index)) {
+                index = Random.Range(0, childCount);
+            }
             Destroy(toBreak.transform.GetChild(index).gameObject);
             keepList.Add(index);
         }
@@ -32,7 +35,7 @@ public class Fixable : PickupItem {
                 }
             }
         }
-        for (int k = 0; k < pivotList.transform.childCount; k++)
+        foreach(int dummy in keepList)
         {
             taken.Add(false);
         }
@@ -40,33 +43,37 @@ public class Fixable : PickupItem {
 
     // Update is called once per frame
     void Update() {
-        if(pickedUp && editVolume != null) {
-            foreach(Part part in editVolume.parts)
-            {
-                checkPivotForPart(part);
+        if (pickedUp && editVolume != null)
+        {
+            if (!isFixed()) {
+                foreach (Part part in editVolume.parts)
+                {
+                    checkPivotForPart(part);
+                }
             }
         }
     }
 
     public void checkPivotForPart(Part a_part) {
-        Debug.Log("checking for part pivot");
         float closestSqrLength = float.PositiveInfinity;
         int closest = -1;
+        Vector3 lastDiff = Vector3.zero;
         for(int k = 0; k < pivotList.transform.childCount; k++) {
             if (!taken[k]) {
                 Vector3 pivotWorld = pivotList.transform.GetChild(k).transform.position;
-                Vector3 partWorld = a_part.transform.position;
+                Vector3 partWorld = a_part.GetComponent<Collider>().ClosestPoint(pivotWorld);
                 Vector3 diff = (pivotWorld - partWorld);
                 float currentSqr = diff.sqrMagnitude;
                 if (currentSqr < closestSqrLength) {
                     closestSqrLength = currentSqr;
                     closest = k;
+                    lastDiff = diff;
                 }
             }
         }
         if(closest > -1) {
             if(closestSqrLength <= snapDistance * snapDistance) {
-                attach(a_part, closest);
+                attach(a_part, closest, lastDiff);
             }
         }
     }
@@ -80,9 +87,9 @@ public class Fixable : PickupItem {
         return true;
     }
 
-    private void attach(Part a_part, int a_pivotIndex) {
+    private void attach(Part a_part, int a_pivotIndex, Vector3 diff) {
         a_part.transform.parent = transform;
-        a_part.transform.position = pivotList.transform.GetChild(a_pivotIndex).transform.position;
+        a_part.transform.position += diff;
         taken[a_pivotIndex] = true;
         releaseFromPlayer();
         editVolume.parts.Remove(a_part);
