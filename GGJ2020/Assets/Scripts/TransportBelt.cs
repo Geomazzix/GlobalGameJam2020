@@ -2,6 +2,8 @@
 
 public class TransportBelt : MonoBehaviour
 {
+    public AudioClip beltSound;
+
     enum ETransportBeltType
     {
         IN,
@@ -13,10 +15,16 @@ public class TransportBelt : MonoBehaviour
     [SerializeField] private float m_BeltSpeed;
     private const float MAX_VELOCITY = 50;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        FindObjectOfType<SoundController>().PlayAudioSource(beltSound, transform.position);
+    }
+
+
     private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Rigidbody>() == null) return;
-
+        
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         Vector3 velocity = new Vector3(

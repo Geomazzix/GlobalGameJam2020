@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public AudioClip pickupSound;
+
     //settings
     public float mouseSensitivity;
     public Transform cameraTransform;
@@ -68,6 +70,7 @@ public class PlayerControl : MonoBehaviour
                     if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, maxPickupDistance)) {
                         PickupItem pickup = hit.transform.gameObject.GetComponent<PickupItem>();
                         if (pickup != null) {
+                            FindObjectOfType<SoundController>().PlayAudioSource(pickupSound, pickup.transform.position);
                             pickedObject = pickup;
                             pickup.player = this;
                             pickup.pickedUp = true;
