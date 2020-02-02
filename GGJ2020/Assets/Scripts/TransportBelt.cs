@@ -16,11 +16,13 @@ public class TransportBelt : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Rigidbody>() == null) return;
-        if (m_Type == ETransportBeltType.OUT && other.GetComponent<Fixable>() != null)
+
+        if (m_Type == ETransportBeltType.OUT)
         {
-            if (!other.GetComponent<Fixable>().isFixed())
+            if (other.GetComponent<Fixable>() != null && !other.GetComponent<Fixable>().isFixed())
                 return;
         }
+
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         Vector3 velocity = new Vector3(
