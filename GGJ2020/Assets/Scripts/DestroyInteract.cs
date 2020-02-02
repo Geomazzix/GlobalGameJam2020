@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestroyInteract : PickupItem, I_Interactable
 {
-
     public void onInteract()
     {
         if (pickedUp) {

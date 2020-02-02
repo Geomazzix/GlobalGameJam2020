@@ -10,8 +10,6 @@ public class ImportBoxBehaviour : MonoBehaviour
     private List<GameObject> instantiatedMaterials = new List<GameObject>();
     public int amountOfObjectsPerBox;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         for(int i =0; i<amountOfObjectsPerBox; ++i)
@@ -27,11 +25,5 @@ public class ImportBoxBehaviour : MonoBehaviour
             Destroy(instantiatedMaterials[i].GetComponent<Rigidbody>());
             (instantiatedMaterials[i].transform).SetPositionAndRotation(transform.position, transform.rotation);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
