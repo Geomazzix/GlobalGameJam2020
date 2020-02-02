@@ -47,6 +47,10 @@ public class PlayerControl : MonoBehaviour
                     }
                 }
             }
+            if (ev.keyCode == KeyCode.Escape)
+            {
+                Application.Quit();
+            }
         }
 
     }
