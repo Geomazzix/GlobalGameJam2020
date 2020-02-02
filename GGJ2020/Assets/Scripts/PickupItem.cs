@@ -10,6 +10,7 @@ public class PickupItem : MonoBehaviour {
 
     protected ItemEditVolumeLabel editVolume = null;
     private bool wasInEditVolume = false;
+    private bool inFloatVolume;
 
     public void releaseFromPlayer() {
         if(player != null) {
@@ -29,12 +30,35 @@ public class PickupItem : MonoBehaviour {
                 release();
             }
         }
+        if(!inFloatVolume && other.GetComponent<floatVolume>() != null && !pickedUp){
+            getInFloatVolume();
+        }
     }
 
     void OnTriggerExit(Collider other) {
         if (other.GetComponent<ItemEditVolumeLabel>() != null) {
             release();
         }
+        if (inFloatVolume && other.GetComponent<floatVolume>() != null) {
+            getOutFloatVolume();
+        }
+    }
+
+    private void getInFloatVolume()
+    {
+        inFloatVolume = true;
+        Rigidbody body = GetComponent<Rigidbody>();
+        body.useGravity = false;
+        body.isKinematic = true;
+        body.velocity = Vector3.zero;
+
+    }
+    private void getOutFloatVolume()
+    {
+        inFloatVolume = false;
+        Rigidbody body = GetComponent<Rigidbody>();
+        body.useGravity = true;
+        body.isKinematic = false;
     }
 
     private void stick() {
@@ -44,10 +68,7 @@ public class PickupItem : MonoBehaviour {
             editVolume.parts.Add(this as Part);
         }
         wasInEditVolume = true;
-       /* Rigidbody body = GetComponent<Rigidbody>();
-        body.useGravity = false;
-        body.isKinematic = true;
-        body.velocity = Vector3.zero;*/
+        
     }
 
     private void release() {
@@ -60,10 +81,8 @@ public class PickupItem : MonoBehaviour {
             }
         }
         editVolume = null;
-        /*wasInEditVolume = false;
-        Rigidbody body = GetComponent<Rigidbody>();
-        body.useGravity = true;
-        body.isKinematic = false;*/
+        wasInEditVolume = false;
+       
     }
 
 }
