@@ -21,14 +21,14 @@ public class PlayerControl : MonoBehaviour
     private float itemRotationX = 0;
     private bool wasClicked = false;
     private PickupItem pickedObject = null;
-    private Canvas m_PauseCanvas;
+    //private Canvas m_PauseCanvas;
     private Vector3 pickupSubRotation;
 
     // Start is called before the first frame update
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
-        m_PauseCanvas = FindObjectOfType<Canvas>();
-        m_PauseCanvas.gameObject.SetActive(false);
+        //m_PauseCanvas = FindObjectOfType<Canvas>();
+        //m_PauseCanvas.gameObject.SetActive(false);
     }
 
     private void OnGUI() { 
@@ -51,13 +51,13 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            m_PauseCanvas.gameObject.SetActive(true);
-            enabled = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //    m_PauseCanvas.gameObject.SetActive(true);
+        //    enabled = false;
+        //}
 
         //item interactions
         if (Input.GetMouseButtonDown(0)) {
